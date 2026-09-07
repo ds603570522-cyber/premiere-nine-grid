@@ -1,0 +1,13 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; connect-src 'none'; img-src 'self' data:"><title>九宫格助手</title><link rel="stylesheet" href="style.css"></head>
+<body><header><span class="badge">PR 2025 · 1.1.1</span><h1>九宫格助手</h1><p>九个视角，一次排好。</p></header>
+<main><label class="source-mode">素材类型<select id="mode"><option value="imageSequence">图像序列 · PNG / EXR 等</option><option value="video">视频文件 · MP4 / MOV 等</option></select></label><div class="toolbar"><button id="choose" class="secondary">选择下一格首帧</button><span id="count">0 / 9</span></div>
+<p class="hint"><span id="modeHint">每格只选一组连续编号图片的首帧。点两个已填格子可交换位置。</span></p><div id="grid" class="grid" aria-label="九宫格顺序"></div>
+<div class="fields"><label class="wide">序列名称<input id="name" value="九宫格合成" maxlength="70"></label>
+<label class="wide">输出画面<select id="size"><option value="5760x3240">5760 × 3240 · 原模板</option><option value="3840x2160">3840 × 2160 · 4K</option><option value="1920x1080">1920 × 1080 · 全高清</option></select></label>
+<label>帧率<select id="fps"><option value="30">30 fps</option><option value="25">25 fps</option><option value="24">24 fps</option><option value="60">60 fps</option></select></label>
+<label>最小间距（像素）<input id="gap" type="number" min="0" max="120" value="0" step="2"></label>
+<label class="wide">声音<select id="audio"><option value="mute">全部静音</option><option value="first">只保留第 1 格声音</option><option value="all">保留全部声音</option></select></label></div>
+<p class="hint">画面等比完整放入每格，比例不同时会留黑边。所有片段从头同步，时长统一到最短素材。图像序列按所选帧率逐帧播放。</p>
+<button id="build" class="primary" disabled>生成九宫格序列</button><div id="status" role="status" aria-live="polite">正在连接 Premiere…</div>
+<details><summary>使用说明</summary><p>先打开或新建 PR 工程。选择九组图像序列首帧，或切换为九个视频文件，按画面位置调整顺序。插件会新建素材箱及九轨序列，生成后请自行保存工程。</p><p>本地测试版；首次使用请在测试工程里检查画面与声音。短视频不会自动循环，素材入点统一为开头。图像序列需同文件夹、相同前缀和编号位数、编号连续。暂不处理单张图片、PR 时间线序列嵌套或多声道分轨。</p></details></main><footer>MEETAVISTA / NINE GRID</footer><script src="js/core.js"></script><script src="js/panel.js"></script></body></html>

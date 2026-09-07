@@ -1,0 +1,12 @@
+# 测试与构建生成内容
+tests/encoding-fixtures/
+dist/
+node_modules/
+preview-profile/
+*.log
+*.tmp
+*.zip
+# 本机安装记录与缓存
+install-state.json
+Thumbs.db
+.DS_Store

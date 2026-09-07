@@ -1,0 +1,23 @@
+name: 插件自动检查
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  test:
+    name: 九宫格功能与中文编码检查
+    runs-on: windows-latest
+    steps:
+      - name: 获取源码
+        uses: actions/checkout@v4
+      - name: 准备 Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: 运行九宫格功能测试
+        run: node tests/test.cjs
+      - name: 检查 Windows PowerShell 中文编码
+        shell: powershell
+        run: ./tests/installer-encoding.ps1
